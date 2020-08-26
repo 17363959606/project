@@ -1,0 +1,18 @@
+package cn.demo.netty.protocoltcp;
+
+
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+
+public class MessageEncoder extends MessageToByteEncoder<MessageProtocol> {
+
+
+    //编码器
+    @Override
+    protected void encode(ChannelHandlerContext ctx, MessageProtocol msg, ByteBuf out) throws Exception {
+        System.out.println("编码器执行---");
+        out.writeInt(msg.getLen());
+        out.writeBytes(msg.getContent());
+    }
+}
