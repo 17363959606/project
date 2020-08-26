@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cpn @parent="read"></cpn>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<template id="cpn">
+<div>
+    <button @click="put">点击发送信息给父组件</button>
+</div>
+</template>
+<script>
+    const cpn = {
+        template :'#cpn',
+        data(){
+            return{
+                msg:'Nihao'
+            }
+        },
+        methods:{
+            put(){
+                this.$emit('parent', this.msg)
+            }
+        }
+    }
+    const app = new Vue({
+        el:`#app`,
+        data:{
+
+        },
+        // components
+        components:{
+            cpn
+        },
+        methods:{
+            read(msg){
+                console.log("msg %o",msg)
+            }
+        }
+    })
+</script>
+</html>

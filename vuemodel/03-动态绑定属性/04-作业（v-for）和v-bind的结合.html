@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- <li v-for="(item,index) in movies" :key="index" @click="click(index)" -->
+            <li v-for="(m, index) in movies" :key="index" v-on:click="clicks(index)" :class="{active:currentIndex === index}">
+                {{m}}  {{index}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+            movies :['至尊无上','赌神','霍元甲'],
+            currentIndex: 0
+        },
+        methods:{
+            clicks(index) {
+                console.log('index %o',index)
+                this.currentIndex = true
+            }
+        }
+    })
+</script>
+</html>

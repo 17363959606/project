@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>姓名</th>
+                    <th>价格</th>
+                    <th>购买数量</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(info,index) in infos" :key="info.id">
+                    <td>{{info.id}}</td>
+                    <td>{{info.name}}</td>
+                    <td>{{info.preic}}</td>
+                    <td>{{info.count}}</td>
+
+                    <!-- <td>{{info.count | zreo}}</td> -->
+                    <td>
+                        <button @click="increment(index)">+</button>
+                        <button @click="decrement(index)">-</button>
+                        <button @click="remove(index)">移除</button>
+
+                    </td>
+                </tr>
+            </tbody>
+            总价：{{infoCount}}
+        </table>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+            infos:[
+                {'id':1,'name':'艾希','preic':'6400','count':1},
+                {'id':2,'name':'盖伦','preic':'5300','count':1},
+                {'id':3,'name':'巴卡','preic':'1200','count':1}
+            ]
+        },
+        methods:{
+            increment(index){
+             this.infos[index].count++
+            },
+            decrement(index){
+                if ( this.infos[index].count <= 0){
+                    this.infos[index].count = 0
+                }else{
+                    this.infos[index].count--
+                }
+            },
+            remove(index){
+                this.infos.splice(index, 1)
+            }
+        },
+        computed:{
+            infoCount(){
+                let count = 0
+                for (info of this.infos){
+                    count += info.count
+                }
+                return count
+            }
+        }
+        // filters:{
+        //     zreo(value){
+        //         if (value <= 0){
+        //             return 0
+        //         }
+        //         return value
+        //     }
+        // }
+    })
+</script>
+</html>

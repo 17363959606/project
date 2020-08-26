@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    </div>
+    <button name="button">按钮1</button>
+    <button name="button">按钮2</button>
+    <button name="button">按钮3</button>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+        }
+    })
+    //ES5之前因为if和for都没有块级作用域的概念，所以在很多时候
+    //我们都必须都借助function的作用域来解决应用外面变量的问题
+    //代码块
+    // {
+    //     var name = "Tom"
+    //     console.log(name);
+    // }  
+    // console.log(name);
+
+    //2.没有块级作用域引起的问题 if的块级
+    // var func
+    // if (true){
+    //     var name = "Tome"
+    //     func = function(){
+    //         console.log(name)
+    //     }
+    //     // func()
+    // }
+    // name = "nima"
+    // func()
+
+    //3 没有块级作用域引起的问题 for的块级
+    // var btns = document.getElementsByName('button')
+    // //se5写法
+    // for (var i =0; i< btns.length;i++){
+    //     btns[i].addEventListener('click',function(){
+    //         console.log("第" + i + "个按钮被点击");
+    //     })
+    // }
+    //se5解决上面问题：需要闭包：
+    //为什么闭包可以解决问题：因为函数是有作用域的 if for没有作用域
+    // for (var i =0; i< btns.length;i++){
+    //     (function(i){
+    //         btns[i].addEventListener('click',function(){
+    //         console.log("第" + i + "个按钮被点击");
+    //       })
+    //     })(i)
+    // }
+
+    //------------------ es 6   let（if/for）有块级作用域
+    const btns = document.getElementsByName('button')
+    for (let i = 0; i < btns.length; i++){
+          btns[i].addEventListener('click',function(){
+          console.log("第" + i + "个按钮被点击")
+        })
+    }
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cpn>
+            <!-- 但里面有自己给定的元素时，slot给的默认元素将失效 -->
+            <span>it is span</span>
+        </cpn>
+        <cpn>
+            <span>two cpn span</span>
+            <i>two cpn i</i>
+        </cpn>
+        <cpn></cpn>
+    </div>
+</body>
+<template id="cpn">
+    <div>
+        <div>我是模板</div>
+        <div>我是模板a</div>
+        <!-- <button>按钮</button> -->
+        <slot>
+            <!-- 给定默认插槽属性 -->
+            <button>按钮</button>
+        </slot>
+    </div>
+
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn = {
+        template : '#cpn'
+    }
+    const app = new Vue({
+        el:`#app`,
+        data:{
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</html>

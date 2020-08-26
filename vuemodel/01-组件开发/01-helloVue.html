@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+ <div id="app">
+    {{ msg }}
+    {{msg}}
+    {{ name }}
+ </div>
+ <div id="app2">
+    {{ msg }}
+    {{ name }}
+ </div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    //let(变量)/const（常量）
+    //编程范式：声明式编程
+   let app = new Vue({
+        el:'#app', //用于挂载要管理的元素
+        data:{ //定义数据
+            msg:'good',
+            name:'sir'
+        }
+    })
+    let app2 = new Vue({
+        el:'#app2', //用于挂载要管理的元素
+        data:{ //定义数据
+            msg:'good2'
+        }
+    })
+</script>
+</html>

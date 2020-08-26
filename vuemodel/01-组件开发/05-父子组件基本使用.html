@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 3.使用组件 -->
+     <component-a></component-a>
+     <component-b></component-b>
+       </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    //1.定义局部组件template
+    const componentA = {
+             template: `<h2>我是局部组件</h2>` 
+        } 
+    const componentB = {
+        'component-a': componentA,
+        'component-b' : { template : `<div>我是主组件B</div>`}
+        
+     } 
+
+    new Vue({
+        el : '#app',
+        components:componentB
+    })
+</script>
+</html>

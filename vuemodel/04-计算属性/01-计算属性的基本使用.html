@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{name + nameTwo}}</h2>
+        <h2>{{name}} {{nameTwo}}</h2>
+        <h2>{{getFullName()}}</h2>
+        <h2>{{fullName}}</h2>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+            name:'Tom',
+            nameTwo:'Li'
+        },
+        methods:{
+            getFullName(){
+                console.log(111)
+                return this.name + '' + this.nameTwo;
+            }
+        },
+        //计算属性 调用时不需要()
+        computed:{
+            fullName(){
+                console.log(222)
+                return this.name + '' + this.nameTwo;
+            }
+        }
+    })
+</script>
+</html>

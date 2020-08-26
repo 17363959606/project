@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. stop修饰符的使用 -->
+    <div id="app" @click="divClick">
+            click
+            <button @click.stop="btnClick">点我</button>
+
+        <!-- 2.prevent修饰符的使用  preventDefault  防止发生默认事件 -->
+        <!-- 点击submit 会自己提交，但是我们想写自己的方法提交需要用到 prevent修饰符 -->
+            <form action="baidu">
+                <input type="submit" value="提交" @click.prevent.stop="subClick">
+            </form>
+        <!-- 3. 监听某个键盘的键帽 监控：enter-->
+          <input type="text" @keyup.enter="keyUp">
+        <!-- 4. on -->
+    </div>
+
+
+
+
+  
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+        },
+        methods:{
+            btnClick() {
+                console.log("btn")
+            },
+            divClick(){
+                console.log("div")
+            },
+            subClick(){
+                console.log("sub")
+            },
+            keyUp(){
+                console.log('keyUp')
+            }
+        }
+    })
+</script>
+</html>

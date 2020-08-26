@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in lists">
+             {{item}}
+            </li>
+        </ul>
+        ----------------
+        <ul>
+            <li v-for="(item,index) in lists">
+                {{index}} {{item}}
+            </li>
+        </ul>
+        ----------------
+        <ul>
+            <li v-for ="items in array_s">
+                {{items}}
+            </li>
+        </ul>
+        ----------------
+        <ul>
+            <li v-for ="(key,value) in array_s">
+                {{key}} {{value}}
+            </li>
+        </ul>
+
+        ----------------1
+        <ul>
+            <li v-for ="(value,key,index) in array_s">
+                {{key}} {{value}} {{index}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+            lists :['name','age','city'],
+            array_s:{
+                'name':'tom',
+                'age':11,
+                'city':4
+            }
+        }
+    })
+</script>
+</html>

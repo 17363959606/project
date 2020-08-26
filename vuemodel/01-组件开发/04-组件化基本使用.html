@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+ <!-- 3.使用组件 -->
+ <my-cpn></my-cpn>
+ <my-cpn></my-cpn>
+</div>
+
+<div id="app2">
+    ----
+    <!-- 3.使用组件 -->
+    <component-a></component-a>
+    <component-a></component-a>
+   </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    //2.注册组件(全局组件，意味着可以在多个vue的实例线面使用)
+    Vue.component('my-cpn',{
+        template:`
+        <div>
+            <h2>我是标题</h2>
+        </div>`
+    })
+    new Vue({
+        el :'#app'
+    })
+    new Vue({
+        el :'#app2',
+        components :{
+            //定义组件名称
+            'component-a' : { template: `<h2>我是局部组件</h2>` }
+        } 
+    })
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    </div>
+</body>
+<script src="../../js/vue.js"></script>
+<!--  这里要加上type = module 表示模块化，否则会报错：因为两个js里面存着相同的变量名 -->
+<!-- 一旦模块化那么，模块之间就方法、属性就不能相互调用了 -->
+<!-- 若要模块化有还能js之间相互调用则需要用到 export/import (导出/导入) -->
+<script src="oneJs.js" type="module"></script>
+<script src="twoJs.js" type="module"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+        }
+    })
+</script>
+</html>

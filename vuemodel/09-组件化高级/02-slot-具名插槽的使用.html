@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 默认改掉没有指定name,组件在给定元素时会被替换掉 -->
+        <cpn>
+            <i>change name</i>
+            <!-- 根据slot名称改变插槽元素 -->
+            <h2 slot="left">left</h2>
+            <input type="text" slot="right">
+        </cpn>
+    </div>
+</body>
+<template id="cpn">
+    <div>
+        <slot name="left">左边</slot>
+        <slot name="centre">中间</slot>
+        <slot name="right">右边</slot>
+        <!-- 没有指定name,组件在给定元素时会被替换掉 -->
+        <slot> <h2>no know name</h2> </slot>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn = {
+        template : '#cpn'
+    }
+    const app = new Vue({
+        el:`#app`,
+        data:{
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 默认展示 -->
+        <cpn>
+        </cpn>
+        <!-- 父组件改变子组件数据展示 -->
+        <cpn>
+            <!-- v-slot:books="books" 只能用于组件或者模板中 -->
+            <!-- v-slot:default、v-slot 为默认插槽 -->
+            <template v-slot:default="books">
+                <h2>父组件改变子组件数据展示</h2>
+                <ul>
+                    <li v-for="book_ in books.bookinfo">
+                        {{book_}}
+                    </li>
+                </ul>
+                {{books.bookinfo.join(' - ')}}
+                --------------------
+            </template> 
+
+               
+              <!-- v-slot:xx 具名插槽 v-slot:语法糖为：# -->
+              <template #bookinfos="books">
+                <h2>具名插槽</h2>
+                {{books.bookinfo.join(' - ')}}
+            </template>
+        </cpn>
+    </div>
+</body>
+<template id="cpn" >
+    <div>
+        <div>
+            <slot v-bind:bookinfo="books">  
+                我是子组件
+                <ul>
+                    <li v-for="book in books">
+                        {{book}}
+                    </li>
+                </ul>
+            </slot>
+          <slot name="bookinfos" :bookinfo="books"></slot>
+        </div>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn = {
+        template : '#cpn',
+        data(){
+            return {
+                books:['原则','快与慢的思考','梦里花落知多少','雨季不再来','撒哈拉沙漠']
+            }
+        }
+
+    }
+    const app = new Vue({
+        el:`#app`,
+        data:{
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</html>

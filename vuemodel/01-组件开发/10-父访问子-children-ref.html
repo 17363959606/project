@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- $refs,$children, 推荐使用：$refs  -->
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn ref="it"></cpn>
+        <button @click="parent">按钮</button>
+    </div>
+</body>
+<template id="cpn">
+    <div>
+        我是子组件
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn = {
+        template: '#cpn',
+        methods:{
+            p(){
+                console.log("---- I am children fun")
+            },
+            it(){
+                console.log("---- I am children it fun")
+            }
+        },
+        data(){
+           return {  name:'I am Tom',
+                     age:17
+            }
+        }
+    }
+
+    const app = new Vue({
+        el:`#app`,
+        data:{
+        },
+        components:{
+            cpn
+        },
+        methods:{
+            parent(){
+                // 获取app元素下的所有子组件
+                // this.$children[0].p()
+                for (p of this.$children){
+                    p.p()
+                }
+                //获取app元素下的指定子组件的属性
+                this.$refs.it.it()
+                console.log(this.$refs.it.name)
+            }
+        }
+    })
+</script>
+</html>

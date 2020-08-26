@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+        .fornup{
+            font-size: 10;
+        }
+    </style>
+</head>
+<body>
+    <div id="app2">
+
+        <h2 :class="getClss()">{{msg}}</h2>
+
+        <button v-on:click="btnClick">按钮</button>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app2= new Vue({
+        el:`#app2`,
+        data:{
+            msg:"你好",
+            isActive:true,
+            isFornup:true
+        },
+        methods:{
+            btnClick(){
+                this.isActive = !this.isActive
+            },
+            getClss(){
+                return {
+                    active:this.isActive,fornup:this.isFornup
+                }
+            }
+        }
+    })
+       // 1
+    // const app = new Vue({
+    //     el:`#app`,
+    //     data:{
+    //         msg:"你好",
+    //         active:'active'
+    //     }
+    // })
+    //2
+    // <!-- 2.集合 -->
+    //     <!-- <h2 :class="{key1:value,key2:value2}"></h2> -->
+    //     <!-- <h2 :class="{类名1:true,类名2:false}"></h2> -->
+    //     <!-- <h2 :class="{active:isActive,fornup:isFornup}">{{msg}}</h2> -->
+    //     <!-- <div id="app">
+    //     1.普通
+    //     <h2 class="active">{{msg}}</h2>
+    //     <h2 :class="active">{{msg}}</h2>
+    // </div> -->
+    
+</script>
+</html>

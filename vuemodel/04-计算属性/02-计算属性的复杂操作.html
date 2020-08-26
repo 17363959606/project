@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(book,index) in books" :key="index">
+                书名：{{book.name}} 价格：{{book.preic}}
+            </li>
+            总价格：  {{bookPreic}}
+        </ul>
+      
+    </div>
+    <!-- 
+        computed与methods的区别
+        computed:有缓存
+        methods:没有缓存
+     -->
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+            books:[
+                {id: 1, name: '傲慢与偏见', preic: 108},
+                {id: 2, name: '快与慢的思考', preic: 99},
+                {id: 3, name:'原则', preic: 188.99},
+                {id: 4, name:'墨菲定律', preic: 87.56}
+            ]
+        },
+        computed:{
+            bookPreic(){
+                let count = 0
+                for (book of this.books){
+                    // consolo.log("index %o,preic %o",book,book.preic);
+                    count += book.preic
+                }
+                return count
+            }
+        }
+    })
+</script>
+</html>

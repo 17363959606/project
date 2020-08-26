@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{fullName}}
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+            fistName : 'Li',
+            lastName : 'Tom',
+        },
+        computed:{ 
+            // computed 一般是不会自动写set方法的,默认调用get
+            //  computed:{ fullName(){ return this.fistName + ' ' + this.lastName} }
+            fullName:{
+                // set(param) {
+                //     let params = param.split(' ')
+                //     this.fistName = params[0]
+                //     this.lastName = params[1]
+                // },
+                get() {
+                    return this.fistName + ' ' + this.lastName
+                }
+            }
+        }
+    })
+</script>
+</html>

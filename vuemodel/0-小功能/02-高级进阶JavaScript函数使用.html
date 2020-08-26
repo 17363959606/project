@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+        }
+    })
+
+    //高级函数：filter/map/reduce
+
+    //filter中的回调函数有一个要求：必须返回一个boolean的值
+    //true:当返回true时，函数内部会自动将这次回调的n加入到新的数组中
+    //false: 当返回false
+    const nums = [1,2,3]
+    nums.filter(function(n){
+
+    })
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<template id="cpn">
+    <div>
+        <h2>计数{{count}}</h2>
+        <button @click="increment">+</button>
+        <button @click="decrement">-</button>
+    </div>
+</template>
+<script>
+    Vue.component('cpn',{
+        template:'#cpn',
+        data(){
+            return {
+                count:0
+            }
+        },
+        methods:{
+            increment() {
+                this.count++
+            },
+            decrement() {
+                this.count--
+            }
+        }
+    })
+       const app = new Vue({
+        el:`#app`,
+        data:{
+            mes:'德玛'
+        }
+    })
+</script>
+</html>

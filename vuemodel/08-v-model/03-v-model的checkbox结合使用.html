@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 单选框 -->
+    <!-- <div id="app">
+        <input type="checkbox" name="agree" id="agree" v-model="isAgrre"> 同意协议
+        <h2>你选择了同意协议：{{isAgrre}}</h2>
+        <button :disabled = "!isAgrre">下一步</button>
+    </div> -->
+    <!-- 多选框 -->
+    <div id="app">
+        <input type="checkbox" name="tall" id="tall" v-model="styles" value="tall"> 高
+
+        <input type="checkbox" name="short" id="short" v-model="styles" value="short"> 矮
+
+        <input type="checkbox" name="fat" id="fat"  v-model="styles" value="fat">  胖
+        
+        <input type="checkbox" name="thin" id="thin"  v-model="styles" value="thin"> 瘦
+        <h2>你选择了：{{styles}}</h2>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:`#app`,
+        data:{
+            isAgrre : false,
+            styles : []
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <cpn v-bind:cmovies="movies" :cmsg="mes"></cpn>
+    </div>
+
+ <template id="cpn">
+    <div>
+        {{cmovies}}
+        {{cmsg}}
+    </div>
+ </template>   
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const cpn = {
+        template : '#cpn',
+        data(){
+            return{
+
+            }
+        },
+        // props:['cmovies','cmsg']
+        props:{
+            //1.类型限制
+            // cmovies:Array,
+            // cmsg:String
+            //2.提供一些默认值
+            cmsg:{
+                type:String,//String类型
+                default:'',//没有值 默认为''
+                required: true //必填的字符串
+            }
+        }
+    }
+const app = new Vue({
+    el:`#app`,
+    data:{
+        mes:'德玛',
+        movies:['你','我','ta']
+    },
+    components:{
+        cpn
+    }
+})
+</script>
+</html>
